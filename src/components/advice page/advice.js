@@ -13,11 +13,19 @@ class Advice extends Component {
     axios.get(`https://jsonplaceholder.typicode.com/posts`)
     .then(res => {
       var data = res.data;
-      var forEachData = ''
-      data.forEach(d => forEachData += d.id)
+      var dataTitle = ""
+      // data.forEach(d => forEachData += d.id)
 
-      this.setState({ posts: forEachData });
-      console.log(forEachData);
+      // this.setState({ posts: forEachData });
+      // console.log(forEachData);
+
+      var outputTitle = data.find((d, index) => {
+        if (index === 0) {
+          return dataTitle += d.title + " - " + d.body
+        }
+      })
+      this.setState({ posts: dataTitle })
+      console.log(dataTitle);
     })
   }
 
@@ -36,11 +44,11 @@ class Advice extends Component {
 
           <div className='card'>
             <div className='advice-title-section'>
-              <h3>{posts}</h3>
+              {/* <h3>{posts}</h3> */}
             </div>
 
             <div className='advice-content-section'>
-              {/* <h2>"{posts}"</h2> */}
+              <h2>"{posts}"</h2>
             </div>
 
             <div className='img-section'>
