@@ -5,17 +5,20 @@
 }
 
 .previous {
-  background-color: blue;
+
   margin-right: 40px;
   padding: 8px;
   width: 80px;
   height: auto;
   border-radius: 50%;
   cursor: pointer;
+    :hover{
+    opacity: 0.5;
+  }
 }
 
 .next {
-  background-color: blue;
+
   margin-left: 40px;
   padding: 8px;
   width: 80px;
@@ -23,7 +26,6 @@
   border-radius: 50%;
   cursor: pointer;
   :hover{
-    background-color: blue;
     opacity: 0.5;
   }
 }

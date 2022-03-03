@@ -58,7 +58,7 @@ class Advice extends Component {
             <div className='advice-title-section'>
               <h3>{title}</h3>
             </div>
-
+            <hr />
             <div className='advice-content-section'>
               <h2>"{content}"</h2>
             </div>

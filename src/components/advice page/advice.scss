@@ -4,8 +4,8 @@
 }
 
 .card {
-  width: 50%;
-  height: 400px;
+  width: 70%;
+  height: 500px;
   background-color: rgb(20, 34, 46);
   text-align: center;
   padding: 24px;
@@ -31,6 +31,7 @@
   padding: 16px;
   color: white;
   text-overflow: ellipsis;
+  margin-top: 32px;
 }
 
 .advice-title-section {
@@ -41,5 +42,5 @@
 }
 
 .img-section {
-
+  height: fit-content;
 }
