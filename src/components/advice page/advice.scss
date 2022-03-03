@@ -26,9 +26,11 @@
 .advice-content-section {
   min-height: 60%;
   width: auto;
-  background-color: aqua;
+  background-color: transparent;
   margin-bottom: 8px;
   padding: 16px;
+  color: white;
+  text-overflow: ellipsis;
 }
 
 .advice-title-section {
@@ -40,13 +42,4 @@
 
 .img-section {
 
-  cursor: pointer;
-}
-
-
-@-webkit-keyframes rotate {
-  100% { -webkit-transform: rotate(360deg); }
-}
-@keyframes rotate {
-  100% { transform: rotate(360deg); }
 }

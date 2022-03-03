@@ -3,12 +3,14 @@ import './reload.scss';
 
 function Reload () {
   return(
-    <div className="face">
-      {/* <span className="pip"></span>
-      <span className="pip"></span>
-      <span className="pip"></span>
-      <span className="pip"></span> */}
-      <i className="fa-solid fa-atom">asdafad</i>
+    <div className="buttons">
+      <div className="previous">
+        <h2>Prev</h2>
+      </div>
+      <div className="next">
+        <h2>Next</h2>
+      </div>
+
     </div>
   );
 }
