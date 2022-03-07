@@ -15,14 +15,13 @@ class Reload extends Component {
         .then(res => {
       var data = res.data;
 
-      const x = data.forEach(element => {
-          var x = element.id
-          console.log(x)
+      const x = data.map(element => {
+        var m = 1
+          if(element.id === m){
+            console.log(x.title, x.body)
+          }
       });
 
-
-      // // logs the data we get
-      // console.log(data);
     })
   };
 

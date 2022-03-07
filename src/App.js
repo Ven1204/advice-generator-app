@@ -1,9 +1,11 @@
 import Advice from './components/advice page/advice';
+import Trial from './components/trial/trial_1';
 
 function App() {
   return (
     <div className="App">
       <Advice />
+      {/* < Trial /> */}
     </div>
   );
 }
