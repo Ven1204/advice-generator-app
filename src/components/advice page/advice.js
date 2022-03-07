@@ -45,8 +45,8 @@ class Advice extends Component {
       })
       // change the initial state of title and content from empty string to datas we fetch
       this.setState({ title: dataTitle, content: dataContent })
-      // logs the data we get
-      console.log(data.id);
+      // // logs the data we get
+      // console.log(data.id);
     })
   }
   // function that mounts the function getData to be used in our render
