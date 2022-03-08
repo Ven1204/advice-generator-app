@@ -12,8 +12,8 @@ class Advice extends Component {
   // }
 
   handleNext=() => {
-    let value = this.props;
-    return value=== 0? "Zero" : value;
+    this.state.id += 1
+    console.log(this.state.title)
   }
   /* initial state of the Advice component which is an object of title and content
   that is set to empty string, which will be filled up  by data we get from API through axios
@@ -21,6 +21,7 @@ class Advice extends Component {
   state = {
     title: '',
     content: '',
+    id: 0
   }
 
   // to fetch data using axios
@@ -31,32 +32,35 @@ class Advice extends Component {
     .then(res => {
       var data = res.data;
       // this 2 variable will contain the data we select from data object
-      var dataTitle = ""
-      var dataContent = ""
+      var dataTitle = ''
+      var dataContent = ''
 
       // using .find method to find a specific data from array of objects from API
-      data.find((d, index) => {
+      data.find((d) => {
+
         // conditional statement to get the specific id we want to render
-        if (index === 0) {
+        if (d.id === this.state.id) {
           // then the 2 empty string variables are filled up with the data
           dataTitle += `${d.title}`
           dataContent += `${d.body}`
         }
+
       })
       // change the initial state of title and content from empty string to datas we fetch
       this.setState({ title: dataTitle, content: dataContent })
       // // logs the data we get
-      // console.log(data.id);
+      // console.log(d.id);
     })
   }
   // function that mounts the function getData to be used in our render
   componentDidMount() {
     this.getData()
+    this.handleNext()
   }
 
   render() {
     // created a variables containing the change state of this component
-    const {title, content} = this.state
+    const {title, content, id} = this.state
     return (
 
       <div className='container'>
@@ -74,8 +78,8 @@ class Advice extends Component {
             </div>
 
             <div className='img-section'>
-              <Reload />
-              {/* <button onClick={this.handleNext}>click</button> */}
+              {/* <Reload /> */}
+              <button onClick={this.handleNext}>click</button>
             </div>
           </div>
 
