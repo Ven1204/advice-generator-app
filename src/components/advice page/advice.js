@@ -6,53 +6,46 @@ import Reload from '../reload/reload';
 import axios from 'axios';
 
 class Advice extends Component {
-  // constructor(props){
-  //   super(props);
-  //   this.handleNext.bind(this)
-  // }
+  constructor(props){
+    super(props);
+    this.handleNext.bind(this)
+  }
 
   handleNext=() => {
-    this.state.id += 1
-    console.log(this.state.title)
+    console.log(this.state.x)
   }
-  /* initial state of the Advice component which is an object of title and content
-  that is set to empty string, which will be filled up  by data we get from API through axios
-  */
+
   state = {
     title: '',
     content: '',
-    id: 0
+    x: ''
   }
 
   // to fetch data using axios
   getData(){
-    // axios uses get method to fetch data from http.....
     axios.get(`https://jsonplaceholder.typicode.com/posts`)
-    // then the response = res is stored in variable data
     .then(res => {
       var data = res.data;
-      // this 2 variable will contain the data we select from data object
       var dataTitle = ''
       var dataContent = ''
+      var dataID = null
 
-      // using .find method to find a specific data from array of objects from API
-      data.find((d) => {
-
-        // conditional statement to get the specific id we want to render
-        if (d.id === this.state.id) {
-          // then the 2 empty string variables are filled up with the data
-          dataTitle += `${d.title}`
-          dataContent += `${d.body}`
-        }
-
+      data.find((element)=>{
+        let x = 3
+        if(element.id === x)
+        return(
+          dataTitle += element.title,
+          dataContent += element.body,
+          dataID += element.id
+        );
+        console.log(element);
       })
-      // change the initial state of title and content from empty string to datas we fetch
-      this.setState({ title: dataTitle, content: dataContent })
-      // // logs the data we get
-      // console.log(d.id);
+
+      this.setState({ title: dataTitle, content: dataContent, x: dataID })
     })
   }
-  // function that mounts the function getData to be used in our render
+
+  // function that calls the function getData to be used in our render
   componentDidMount() {
     this.getData()
     this.handleNext()
@@ -60,9 +53,8 @@ class Advice extends Component {
 
   render() {
     // created a variables containing the change state of this component
-    const {title, content, id} = this.state
+    const {title, content} = this.state
     return (
-
       <div className='container'>
         <div className='header-container'>
           <Header />
@@ -78,7 +70,7 @@ class Advice extends Component {
             </div>
 
             <div className='img-section'>
-              {/* <Reload /> */}
+              <Reload />
               <button onClick={this.handleNext}>click</button>
             </div>
           </div>
