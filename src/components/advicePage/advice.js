@@ -20,7 +20,7 @@ class Advice extends Component {
 
 	handleNext = () => {
 		const dataArray = this.state.data;
-		let nextID = this.state.id + 1;
+		let nextID = this.state.id ++;
 		let currentObject = dataArray[nextID];
 
 		this.setState({
@@ -28,11 +28,13 @@ class Advice extends Component {
 			content: currentObject.body,
 			id: currentObject.id,
 		});
+    console.log(currentObject.id)
 	};
 
 	// to fetch data using axios
 	getData() {
-		axios.get(`https://jsonplaceholder.typicode.com/posts`).then((res) => {
+		axios.get(`https://jsonplaceholder.typicode.com/posts`)
+    .then((res) => {
 			var data = [];
 
 			data = res.data;

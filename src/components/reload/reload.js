@@ -4,29 +4,23 @@ import axios from 'axios';
 
 
 class Reload extends Component {
-    constructor(props){
-    super(props);
-    this.handleNext.bind(this)
-  }
+	constructor(props) {
+		super(props);
+		this.handleNext = this.handleNext.bind(this);
+	}
 
-  handleNext = e => {
-    e.preventDefault();
-    const s = axios.get(`https://jsonplaceholder.typicode.com/posts`)
-        .then(res => {
-      var data = res.data;
+	handleNext = () => {
+		const dataArray = this.state.data;
+		let nextID = this.state.id + 1;
+		let currentObject = dataArray[nextID];
 
-      const s = data.map(element => {
-        var m = 0
-          for(element.id = m; element.id < m; element.id ++ ){
-            element.id += 1
-
-          }
-            console.log(element.id);
-          // }
-      });
-
-    })
-  };
+		this.setState({
+			title: currentObject.title,
+			content: currentObject.body,
+			id: currentObject.id,
+		});
+    console.log(dataArray)
+	};
 
   render(){
     return(
