@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './advice.scss';
+// import './advice.scss';
 import Header from '../headerPage/header';
 import Reload from '../reload/reload';
 // import needed for axios to work

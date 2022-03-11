@@ -19,12 +19,6 @@ class Advice extends Component {
   }
 
   handleNext=() => {
-    this.state.data.find((data) => {
-      var id = data.id
-      for(id === this.state.id; id++;){
-        this.state.id += 1;
-      }
-    })
     console.log(this.state.id)
   }
 
@@ -39,14 +33,14 @@ class Advice extends Component {
 
       data = res.data
       data.map((element)=>{
-        if(element.id === 1)
+        if(element.id === 3)
         return(
           dataTitle += element.title,
           dataContent += element.body,
           dataID += element.id
         )
       })
-      console.log(data.length)
+      // console.log(data.length)
 
       this.setState({ title: dataTitle, content: dataContent, id: dataID, data: data })
     })
@@ -80,8 +74,8 @@ class Advice extends Component {
             </div>
 
             <div className='img-section'>
-              {/* <Reload /> */}
-              <button onClick={this.handleNext}>click</button>
+              <Reload />
+              {/* <button onClick={this.handleNext}>click</button> */}
             </div>
           </div>
 
