@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './advice.scss';
-import Header from '../header page/header';
+import Header from '../headerPage/header';
 import Reload from '../reload/reload';
 // import needed for axios to work
 import axios from 'axios';
@@ -8,48 +8,58 @@ import axios from 'axios';
 class Advice extends Component {
   constructor(props){
     super(props);
-    this.handleNext.bind(this)
-  }
-
-  handleNext=() => {
-    console.log(this.state.x)
+    // this.handleNext.bind(this)
   }
 
   state = {
     title: '',
     content: '',
-    x: ''
+    data: [],
+    id: null
+  }
+
+  handleNext=() => {
+    this.state.data.find((data) => {
+      var id = data.id
+      for(id === this.state.id; id++;){
+        this.state.id += 1;
+      }
+    })
+    console.log(this.state.id)
   }
 
   // to fetch data using axios
   getData(){
     axios.get(`https://jsonplaceholder.typicode.com/posts`)
     .then(res => {
-      var data = res.data;
       var dataTitle = ''
       var dataContent = ''
-      var dataID = null
+      var dataID = ''
+      var data = []
 
-      data.find((element)=>{
-        let x = 3
-        if(element.id === x)
+      data = res.data
+      data.map((element)=>{
+        if(element.id === 1)
         return(
           dataTitle += element.title,
           dataContent += element.body,
           dataID += element.id
-        );
-        console.log(element);
+        )
       })
+      console.log(data.length)
 
-      this.setState({ title: dataTitle, content: dataContent, x: dataID })
+      this.setState({ title: dataTitle, content: dataContent, id: dataID, data: data })
     })
   }
 
+
+
   // function that calls the function getData to be used in our render
   componentDidMount() {
-    this.getData()
+    this.setState(this.getData)
     this.handleNext()
   }
+
 
   render() {
     // created a variables containing the change state of this component
@@ -70,7 +80,7 @@ class Advice extends Component {
             </div>
 
             <div className='img-section'>
-              <Reload />
+              {/* <Reload /> */}
               <button onClick={this.handleNext}>click</button>
             </div>
           </div>
