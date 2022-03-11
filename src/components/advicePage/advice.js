@@ -1,87 +1,82 @@
-import React, { Component } from 'react';
-import './advice.scss';
-import Header from '../headerPage/header';
-import Reload from '../reload/reload';
+import React, { Component } from "react";
+import "./advice.scss";
+import Header from "../headerPage/header";
+import Reload from "../reload/reload";
 // import needed for axios to work
-import axios from 'axios';
+import axios from "axios";
 
 class Advice extends Component {
-  constructor(props){
-    super(props);
-    // this.handleNext.bind(this)
-  }
+	constructor(props) {
+		super(props);
+		this.handleNext = this.handleNext.bind(this);
+	}
 
-  state = {
-    title: '',
-    content: '',
-    data: [],
-    id: null
-  }
+	state = {
+		title: "",
+		content: "",
+		data: [],
+		id: 0,
+	};
 
-  handleNext=() => {
-    console.log(this.state.id)
-  }
+	handleNext = () => {
+		const dataArray = this.state.data;
+		let nextID = this.state.id + 1;
+		let currentObject = dataArray[nextID];
 
-  // to fetch data using axios
-  getData(){
-    axios.get(`https://jsonplaceholder.typicode.com/posts`)
-    .then(res => {
-      var dataTitle = ''
-      var dataContent = ''
-      var dataID = ''
-      var data = []
+		this.setState({
+			title: currentObject.title,
+			content: currentObject.body,
+			id: currentObject.id,
+		});
+	};
 
-      data = res.data
-      data.map((element)=>{
-        if(element.id === 3)
-        return(
-          dataTitle += element.title,
-          dataContent += element.body,
-          dataID += element.id
-        )
-      })
-      // console.log(data.length)
+	// to fetch data using axios
+	getData() {
+		axios.get(`https://jsonplaceholder.typicode.com/posts`).then((res) => {
+			var data = [];
 
-      this.setState({ title: dataTitle, content: dataContent, id: dataID, data: data })
-    })
-  }
+			data = res.data;
 
+			this.setState({
+				title: data[0].title,
+				content: data[0].body,
+				id: data[0].id,
+				data: data,
+			});
+		});
+	}
 
+	// function that calls the function getData to be used in our render
+	componentDidMount() {
+		this.getData();
+	}
 
-  // function that calls the function getData to be used in our render
-  componentDidMount() {
-    this.setState(this.getData)
-    this.handleNext()
-  }
+	render() {
+		// created a variables containing the change state of this component
+		const { title, content } = this.state;
+		return (
+			<div className="container">
+				<div className="header-container">
+					<Header />
+				</div>
 
+				<div className="card">
+					<div className="advice-title-section">
+						<h3>{title}</h3>
+					</div>
+					<hr />
+					<div className="advice-content-section">
+						<h2>"{content}"</h2>
+					</div>
 
-  render() {
-    // created a variables containing the change state of this component
-    const {title, content} = this.state
-    return (
-      <div className='container'>
-        <div className='header-container'>
-          <Header />
-        </div>
-
-          <div className='card'>
-            <div className='advice-title-section'>
-              <h3>{title}</h3>
-            </div>
-            <hr />
-            <div className='advice-content-section'>
-              <h2>"{content}"</h2>
-            </div>
-
-            <div className='img-section'>
-              <Reload />
-              {/* <button onClick={this.handleNext}>click</button> */}
-            </div>
-          </div>
-
-      </div>
-    );
-  }
+					<div className="img-section">
+						{/* <Reload /> */}
+						<button onClick={this.handleNext}>click</button>
+					</div>
+				</div>
+			</div>
+		);
+	}
 }
 
 export default Advice;
