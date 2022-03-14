@@ -1,11 +1,11 @@
-import Advice from './components/advicePage/advice';
-// import Trial from './components/trial/trial_1';
+// import Advice from './components/advicePage/advice';
+import Advice from './components/trial/trial2';
 
 function App() {
   return (
     <div className="App">
-      <Advice />
-      {/* < Trial /> */}
+      {/* <Advice /> */}
+      < Advice />
     </div>
   );
 }

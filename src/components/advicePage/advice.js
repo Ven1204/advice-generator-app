@@ -31,6 +31,7 @@ class Advice extends Component {
     console.log(currentObject.id)
 	};
 
+
 	// to fetch data using axios
 	getData() {
 		axios.get(`https://jsonplaceholder.typicode.com/posts`)
@@ -73,7 +74,8 @@ class Advice extends Component {
 
 					<div className="img-section">
 						{/* <Reload /> */}
-						<button onClick={this.handleNext}>click</button>
+
+						<button onClick={this.handleNext}>Next</button>
 					</div>
 				</div>
 			</div>
