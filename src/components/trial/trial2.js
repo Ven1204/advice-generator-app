@@ -7,15 +7,16 @@ const Advice =() => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [data, setData] = useState([]);
-  const [id, setId] = useState(0);
+  let [id, setId] = useState(0);
 
   useEffect(() => {
     getData();
-    initialTitle();
-    initialContent();
+    // initialTitle();
+    // initialContent();
   }, []);
 
-	const getData = () => {
+
+	const getData = async () => {
 		axios.get(`https://jsonplaceholder.typicode.com/posts`)
     .then((res) => {
 			var data = [];
@@ -25,13 +26,27 @@ const Advice =() => {
 	}
 
   const initialTitle = () => {
-    setTitle(data[0].title)
+    setTitle(data[id].title);
   }
+
   const initialContent = () => {
-    setContent(data[0].body)
+    setContent(data[0].body);
   }
-  const next = () => {
-    console.log(data);
+
+  const next = (e) => {
+    e.preventDefault();
+    const x = (data[0].id ++)
+    let dataArray = data
+    let y = dataArray[x]
+    setId = y
+    console.log(setId)
+  }
+
+  let prev = () => {
+    const x = (data[0].id --)
+    let dataArray = data
+    let y = dataArray[x]
+    console.log(y)
   }
 
 
@@ -53,7 +68,7 @@ const Advice =() => {
 
         <div className="img-section">
           {/* <Reload /> */}
-
+          <button onClick={prev}>Previous</button>
           <button onClick={next}>Next</button>
         </div>
       </div>

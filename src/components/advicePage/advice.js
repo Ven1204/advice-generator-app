@@ -74,7 +74,6 @@ class Advice extends Component {
 
 					<div className="img-section">
 						{/* <Reload /> */}
-
 						<button onClick={this.handleNext}>Next</button>
 					</div>
 				</div>
