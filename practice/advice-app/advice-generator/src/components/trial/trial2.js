@@ -11,8 +11,8 @@ const Advice =() => {
 
   useEffect(() => {
     getData();
-    // initialTitle();
-    // initialContent();
+    initialTitle();
+    initialContent();
   }, []);
 
 
@@ -30,7 +30,7 @@ const Advice =() => {
   }
 
   const initialContent = () => {
-    setContent(data[0].body);
+    setContent(data[id].body);
   }
 
   const next = (e) => {
