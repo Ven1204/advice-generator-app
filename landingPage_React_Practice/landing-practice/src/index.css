@@ -1,0 +1,126 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+.App{
+  z-index: 2;
+}
+
+body {
+  color: #282828;
+  font-family: Arial, Helvetica, sans-serif
+}
+
+canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.hero {
+  padding: 4em 3em;
+  width: calc(50% - 2em);
+}
+
+.hero .title {
+  color: #ffba02;
+  font-size: 3em;
+  margin-bottom: .5em;
+}
+
+.hero .text {
+  letter-spacing: 1px;
+  line-height: 1.5;
+  color: rgb(238, 238, 238);
+  margin-bottom: 1em;
+}
+
+.btn {
+  background: #a7a7a7;
+  color: #fff;
+  padding: .5em 1em;
+  border-radius: 3px;
+  text-decoration: none;
+  font-size: 1em;
+  border: none;
+  margin-right: .5em;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.featured-car h1 {
+  text-align: left;
+  margin-left: 1em;
+  font-size: 2.5em;
+  color: #fff;
+}
+
+.pricing-table {
+  padding: 1em 3em;
+  display: flex;
+  /* background-color: #282828; */
+  z-index: -2;
+}
+.pricing-table :hover{
+  background-color: #a7a7a7;
+}
+
+.pricing-card {
+  background-color: rgba(255, 255, 255, .3);
+  padding: 1em;
+  border-radius: 5px;
+  transform: translate(-100px, 100px);
+  opacity: 0;
+  animation: 1s slideIn;
+  animation-delay: 3s;
+  animation-fill-mode: forwards;
+  margin: 1em 1em;
+  width: 50%;
+}
+
+
+
+@keyframes slideIn {
+  to {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+}
+
+.pricing-card:nth-child(2) {
+  /* margin: 0 2.5em; */
+  transform: translate(0, 100px);
+  animation-delay: 3.2s;
+}
+
+.pricing-card:nth-child(3) {
+  transform: translate(100px, 100px);
+  animation-delay: 3.4s;
+}
+
+
+
+.pricing-card .title {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: black;
+}
+
+.pricing-card .info {
+  margin: 1em 0.5em;
+  color: black;
+  text-align: justify;
+  padding-bottom: 2em;
+}
+
+.pricing-card .btn {
+  background: #ffba02;
+  cursor: pointer;
+}
+
+.btn-container{
+  position: absolute;
+  bottom: 22px;
+}
