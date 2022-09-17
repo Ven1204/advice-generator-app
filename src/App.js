@@ -1,4 +1,5 @@
 // import Advice from './components/advicePage/advice';
+import React from 'react';
 import Advice from './components/trial/trial2';
 
 function App() {
