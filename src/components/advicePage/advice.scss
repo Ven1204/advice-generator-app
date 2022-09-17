@@ -1,0 +1,46 @@
+.container  {
+  color: blueviolet;
+  background-color: rgb(0, 10, 32);
+}
+
+.card {
+  width: 70%;
+  height: 500px;
+  background-color: rgb(20, 34, 46);
+  text-align: center;
+  padding: 24px;
+  border-radius: 16px;
+  box-shadow: (
+    4px 4px 18px,
+    -4px -4px 18px,
+  );
+  margin: auto;
+  margin-top: 20px;
+}
+
+.header-container {
+  margin: auto;
+  text-align: center;
+}
+
+.advice-content-section {
+  min-height: 60%;
+  width: auto;
+  background-color: transparent;
+  margin-bottom: 8px;
+  padding: 16px;
+  color: white;
+  text-overflow: ellipsis;
+  margin-top: 32px;
+}
+
+.advice-title-section {
+  width: auto;
+  margin-bottom: 8px;
+  font-weight: 400;
+  color: white;
+}
+
+.img-section {
+  height: fit-content;
+}
